@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>SSEC Assignments</title>
+
+</head>
+
+<body>
+    <div onpaste="return false" ;>
+        <form method="POST">
+            {% csrf_token %}
+            {{ field.media }}
+            {{ field.as_p }}
+            <input type="submit" value='Submit'>
+            <script>
+                var editor = CKEDITOR.replace('id_content', {
+                    filebrowserBrowseUrl: 'ckeditor/browse',
+                    filebrowserUploadUrl: 'ckeditor/upload',
+                    removeDialogTabs: 'image:advanced,image:Link',
+                    toolbar: [
+                        ["Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker"],
+                        ['NumberedList', 'BulletedList', "Indent", "Outdent", 'JustifyLeft', 'JustifyCenter',
+                            'JustifyRight', 'JustifyBlock'],
+                        ["Image", "Table", "Link", "Unlink", "Anchor", "SectionLink", "Subscript", "Superscript"], ['Undo', 'Redo'],
+                        ["Maximize"]
+                    ],
+                });
+                editor.on('paste', function (evt) {
+                    evt.data.dataValue = evt.data.dataValue.replace(evt.data.dataValue, '');
+                });
+                
+
+            </script>
+            <!---
+            <script>
+                for (var editor in CKEDITOR.instances) {
+                    console.log("hello" + editor)
+                    CKEDITOR.instances.editor.on('paste', function (evt) {
+                        evt.cancel();
+                    });
+                }
+                $(document).ready(function(){
+                    $(textarea#id_content).on("paste", function(e){e.preventDefault();});
+                });
+            </script>
+        -->
+    </div>
+    </form>
+</body>
+
+</html>
