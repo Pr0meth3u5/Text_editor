@@ -19,9 +19,11 @@ from django.conf.urls.static import static
 from django.conf import settings
 from ckeditor_uploader import views as ck_views
 from django.contrib.auth.decorators import login_required
+#from .views import test
 
 urlpatterns = [
     #path('polls/',include('polls.urls')),
+    #path("new", test ),
     path('admin/', admin.site.urls),
     path('Editor/', include('Editor.urls')),
     path('Editor/ckeditor/upload', ck_views.upload, name='ckeditor_upload'),

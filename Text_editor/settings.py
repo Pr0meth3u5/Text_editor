@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'Editor.apps.EditorConfig',
+    'crispy_forms',
 
 ]
 
@@ -65,7 +66,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'Editor/templates')
+            os.path.join(BASE_DIR, 'Editor/templates'),
+            os.path.join(BASE_DIR, 'react'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -88,7 +90,7 @@ WSGI_APPLICATION = 'Text_editor.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'Text_Editor/db.sqlite3'),
     }
 }
 
@@ -131,6 +133,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static/'
+#STATICFILES_DIRS = (
+   # os.path.join(BASE_DIR, 'react', "build", "static"),  # update the STATICFILES_DIRS
+#)
 
 #Ckeditor config
 
@@ -158,5 +163,5 @@ CKEDITOR_CONFIGS = {
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mayurajxxx@gmail.com'
-EMAIL_HOST_PASSWORD = 'ptwgjm.ad'
+EMAIL_HOST_USER = 'ssectexteditor@gmail.com'
+EMAIL_HOST_PASSWORD = 'gaganlnmayo'

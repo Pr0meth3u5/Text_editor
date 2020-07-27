@@ -9,9 +9,25 @@
 </head>
 
 <body>
-    <div onpaste="return false" ;>
+    <!--HTML code-->
+    <link rel="stylesheet" href="../media/assets/makeover.css" type="text/css">
+    
+    <div class="box">
+    <div id="image">
+        <img src="../media/assets/unnamed.png">
+    </div>
+
+    <div id="texts"> 
+        <h1>Shri Shankracharya Engineering College</h1> 
+         <p1> Near Junwani Chowk, Bhilai, Chattisgrah</p1>
+         </div>
+    </div>
+    
+        
+    <div onpaste="return false">
         <form method="POST">
             {% csrf_token %}
+            
             {{ field.media }}
             {{ field.as_p }}
             <input type="submit" value='Submit'>
@@ -28,9 +44,11 @@
                         ["Maximize"]
                     ],
                 });
+                document.getElementById("").style.visibility = "hidden";
                 editor.on('paste', function (evt) {
                     evt.data.dataValue = evt.data.dataValue.replace(evt.data.dataValue, '');
                 });
+                
                 
 
             </script>
@@ -50,5 +68,13 @@
     </div>
     </form>
 </body>
+    <footer>
+        <hr>
+        <p2>Disclamer:<br>
+        1. Write it by your own<br>
+        2.Don't try to copy and paste it's impossible<br>
+        3.Made by Mayuraj, L.N.Mehta, Gagandeep and Pavan Sir<br></p2>
+    </footer>
+    
 
 </html>

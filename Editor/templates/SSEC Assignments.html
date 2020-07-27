@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)file:///C:/Users/Ganagdeep/Desktop/final/editor.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="./SSEC Assignments_files/jquery.min.js.download"></script>
+    
+    <title>SSEC Assignments</title>
+
+</head>
+
+<body>
+    <!--HTML code-->
+    <link rel="stylesheet" href="./SSEC Assignments_files/makeover.css" type="text/css">
+    
+    <div class="box">
+    <div id="image">
+        <img src="./SSEC Assignments_files/unnamed.png">
+    </div>
+
+    <div id="texts"> 
+        <h1>Shri Shankracharya Engineering College</h1> 
+         <p1> Near Junwani Chowk, Bhilai, Chattisgrah</p1>
+         </div>
+    </div>
+    
+        
+    <div onpaste="return false">
+        <form method="POST">
+            {% csrf_token %}
+            {{ field.media }}
+            {{ field.as_p }}
+            <input type="submit" value="Submit">
+            <script>
+                var editor = CKEDITOR.replace('id_content', {
+                    filebrowserBrowseUrl: 'ckeditor/browse',
+                    filebrowserUploadUrl: 'ckeditor/upload',
+                    removeDialogTabs: 'image:advanced,image:Link',
+                    toolbar: [
+                        ["Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker"],
+                        ['NumberedList', 'BulletedList', "Indent", "Outdent", 'JustifyLeft', 'JustifyCenter',
+                            'JustifyRight', 'JustifyBlock'],
+                        ["Image", "Table", "Link", "Unlink", "Anchor", "SectionLink", "Subscript", "Superscript"], ['Undo', 'Redo'],
+                        ["Maximize"]
+                    ],
+                });
+                editor.on('paste', function (evt) {
+                    evt.data.dataValue = evt.data.dataValue.replace(evt.data.dataValue, '');
+                });
+                
+
+            </script>
+            <!---
+            <script>
+                for (var editor in CKEDITOR.instances) {
+                    console.log("hello" + editor)
+                    CKEDITOR.instances.editor.on('paste', function (evt) {
+                        evt.cancel();
+                    });
+                }
+                $(document).ready(function(){
+                    $(textarea#id_content).on("paste", function(e){e.preventDefault();});
+                });
+            </script>
+        -->
+    </form></div>
+    
+
+    <footer>
+        <hr>
+        <p2>Disclamer:<br>
+        1. Write it by your own<br>
+        2.Don't try to copy and paste it's impossible<br>
+        3.Made by Mayuraj, L.N.Mehta, Gagandeep and Pavan Sir<br></p2>
+    </footer>
+    
+
+<div class="__brackets-ld-highlight" style="left: 290px; top: 178px; z-index: 2000000; margin: 0px; padding: 0px; position: absolute; pointer-events: none; box-shadow: rgb(255, 255, 255) 0px 0px 1px; box-sizing: content-box; border-width: 0px; border-style: none; border-color: rgba(21, 165, 255, 0.85); transform: none; transform-origin: 0px 0px; background-color: rgba(0, 162, 255, 0); opacity: 0.6;"><div style="background-color: rgba(21, 165, 255, 0.58); height: 0px; left: 0px; top: 0px; position: absolute; display: none; transform: none;"></div><div style="background-color: rgba(21, 165, 255, 0.58); width: 0px; top: 0px; right: 0px; position: absolute; display: none; transform: none;"></div><div style="background-color: rgba(21, 165, 255, 0.58); height: 0px; left: 0px; bottom: 0px; position: absolute; display: none; transform: none;"></div><div style="background-color: rgba(21, 165, 255, 0.58); width: 0px; top: 0px; left: 0px; position: absolute; display: none; transform: none;"></div><div style="border-width: 1px; border-style: dashed; border-color: rgba(0, 162, 255, 0.5); height: 0px; left: 0px; top: 0px; position: absolute; display: none; transform: none;"></div><div style="border-width: 1px; border-style: dashed; border-color: rgba(0, 162, 255, 0.5); width: 0px; top: 0px; right: 0px; position: absolute; display: none; transform: none;"></div><div style="border-width: 1px; border-style: dashed; border-color: rgba(0, 162, 255, 0.5); height: 0px; left: 0px; bottom: 0px; position: absolute; display: none; transform: none;"></div><div style="border-width: 1px; border-style: dashed; border-color: rgba(0, 162, 255, 0.5); width: 0px; top: 0px; left: 0px; position: absolute; display: none; transform: none;"></div></div></body></html>
