@@ -5,5 +5,5 @@ app_name = 'Editor'
 urlpatterns = [
     
     path('', views.Home, name='Home'),
-    #path('new', views.test, name="Test"),
+    path('ajax/check_Teachid', views.Validate_Tid, name="Validate_Tid"),
 ]

@@ -11,27 +11,39 @@
 <body>
     <!--HTML code-->
     <link rel="stylesheet" href="../media/assets/makeover.css" type="text/css">
-    
+
     <div class="box">
-    <div id="image">
-        <img src="../media/assets/unnamed.png">
+        <div id="image">
+            <img src="../media/assets/unnamed.png">
+        </div>
+
+        <div id="texts">
+            <h1>Shri Shankracharya Engineering College</h1>
+            <p1> Near Junwani Chowk, Bhilai, Chattisgrah</p1>
+        </div>
     </div>
 
-    <div id="texts"> 
-        <h1>Shri Shankracharya Engineering College</h1> 
-         <p1> Near Junwani Chowk, Bhilai, Chattisgrah</p1>
-         </div>
-    </div>
-    
-        
+
     <div onpaste="return false">
         <form method="POST">
             {% csrf_token %}
-            
             {{ field.media }}
             {{ field.as_p }}
             <input type="submit" value='Submit'>
             <script>
+                $("#id_Rollno").change(function () {
+
+                    val = $("#id_Rollno").val();
+                    if (isNaN(val)) {
+                        $("#id_invalRoll").remove();
+                        $("#id_Rollnos").css("border-color", "red");
+                        $("#id_Rollno").after('<p id="id_invalRoll" style="color:red;">\bInvalid RollNo</p>');
+                    }
+                    else {
+                        $("#id_invalRoll").remove();
+                        $("#id_Rollno").css("border-color", "Green");
+                    }
+                });
                 var editor = CKEDITOR.replace('id_content', {
                     filebrowserBrowseUrl: 'ckeditor/browse',
                     filebrowserUploadUrl: 'ckeditor/upload',
@@ -44,12 +56,38 @@
                         ["Maximize"]
                     ],
                 });
-                document.getElementById("").style.visibility = "hidden";
+                //document.getElementById("").style.visibility = "hidden";
                 editor.on('paste', function (evt) {
                     evt.data.dataValue = evt.data.dataValue.replace(evt.data.dataValue, '');
                 });
-                
-                
+
+                $("#id_TeachId").change(function () {
+                    var teachId = $("#id_TeachId").val();
+                    $.ajax({
+                        url: '/Editor/ajax/check_Teachid',
+                        data: {
+                            'TeachId': teachId
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.is_Valid) {
+                                $("#id_TeachId").css("border-color", "Green");
+                                $("#id_invalTid").remove()
+                                $("#id_valTid").remove()
+                                $("#id_TeachId").after('<p id="id_valTid" style="color:Green";>\bTeacher: </p>');
+                                $("#id_valTid").append(data.Name)
+                            }
+                            else {
+                                $("#id_TeachId").css("border-color", "red");
+                                $("#id_valTid").remove()
+                                $("#id_invalTid").remove()
+                                $("#id_TeachId").after('<p id="id_invalTid" style="color:red";>\bInvalid TeacherId</p>');
+                               
+                            }
+                        }
+                    });
+                });
+
 
             </script>
             <!---
@@ -68,13 +106,13 @@
     </div>
     </form>
 </body>
-    <footer>
-        <hr>
-        <p2>Disclamer:<br>
+<footer>
+    <hr>
+    <p2>Disclamer:<br>
         1. Write it by your own<br>
         2.Don't try to copy and paste it's impossible<br>
         3.Made by Mayuraj, L.N.Mehta, Gagandeep and Pavan Sir<br></p2>
-    </footer>
-    
+</footer>
+
 
 </html>

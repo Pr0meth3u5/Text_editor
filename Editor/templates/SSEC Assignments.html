@@ -27,7 +27,9 @@
         <form method="POST">
             {% csrf_token %}
             {{ field.media }}
-            {{ field.as_p }}
+            {{ field.Rollno }}<p id ="id_InvalRoll" style="color:red;">Roll No should be a number</p>
+            {{ field.TeachId }}
+            {{ field.content }}
             <input type="submit" value="Submit">
             <script>
                 var editor = CKEDITOR.replace('id_content', {

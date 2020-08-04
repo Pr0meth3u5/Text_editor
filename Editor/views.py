@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.shortcuts import render
 from .forms import Efield_form
 from .models import TeachId
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .utils import renderToPdf, sendMail
 
 def Home(request):
@@ -26,5 +26,15 @@ def Home(request):
     field = Efield_form()
     return render(request, "editor.html", {"field": field})
 
-#def Validate_Tid():
+def Validate_Tid(request):
+    if request.method == "GET":
+        Tid = request.GET.get('TeachId', None)
+
+        data = {
+            'is_Valid': TeachId.objects.filter(teachId=Tid).exists(),
+            'Name': TeachId.objects.get(teachId=Tid).Name if TeachId.objects.filter(teachId=Tid).exists() else "None"
+        }
+        return JsonResponse(data)
+    
+
 
