@@ -17,7 +17,7 @@ pathspec==0.8.0
 pdfkit==0.6.1
 Pillow==8.2.0
 pylint==2.5.3
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 pytz==2020.1
 regex==2020.6.8
 reportlab==3.5.44
